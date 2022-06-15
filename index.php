@@ -36,16 +36,16 @@ function name($data1) {
 }
 
 function image($data1) {
-    $img = $data1['sprites'];
+    $img = $data1['sprites']['front_default'];
     return $img;
 }
 
 function moves($data1) {
     $moves = $data1['moves'];
-    for ($i = 0; $i <count($moves) && $i < 4; $i++) {
-        $moves = $moves[$i];
+    for ($i = 0; $i < 4; $i++) {
+        $movesArray[] = $moves[$i]['move']['name'];
     }
-    return $moves;
+    return json_encode($movesArray);
 }
 
 
@@ -80,9 +80,7 @@ function moves($data1) {
             <div id="found">
 
                 <div id="pokePic">
-
-                    <img src="<?php echo $pokemon['image'] ?>" alt="#">
-
+                    <img src="<?php echo $pokemon['image']?>" alt="pokemonImg">
                 </div>
                 <div id="pokeFound">
                     <div class="details">
